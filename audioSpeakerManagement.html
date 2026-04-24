@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title> ইসলামিয়া ডেন্টাল কেয়ার </title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #e9f0fc 0%, #d9e4f5 100%);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+    }
+
+    /* modern card container */
+    .tts-card {
+      max-width: 820px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(0px);
+      border-radius: 2rem;
+      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25), 0 8px 18px rgba(0, 0, 0, 0.05);
+      padding: 2rem 2rem 2.2rem;
+      transition: all 0.2s ease;
+      border: 1px solid rgba(255,255,255,0.5);
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+      .tts-card {
+        padding: 1.5rem;
+      }
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #1A2A3F, #2C4C6E);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 0.3rem;
+      display: inline-block;
+    }
+
+    .sub {
+      color: #5a6e7c;
+      font-weight: 500;
+      font-size: 0.9rem;
+      border-left: 3px solid #2c7da0;
+      padding-left: 0.75rem;
+      margin-top: 0.25rem;
+      margin-bottom: 1.8rem;
+    }
+
+    /* textarea */
+    .input-group {
+      margin-bottom: 1.8rem;
+    }
+
+    label {
+      font-weight: 600;
+      color: #1e2f3e;
+      display: block;
+      margin-bottom: 0.55rem;
+      font-size: 0.9rem;
+      letter-spacing: -0.2px;
+    }
+
+    textarea {
+      width: 100%;
+      border-radius: 1.2rem;
+      border: 1.5px solid #e2e8f0;
+      background: #fefefe;
+      padding: 1rem 1.2rem;
+      font-size: 1rem;
+      font-family: 'Inter', monospace, 'Segoe UI', system-ui;
+      resize: vertical;
+      transition: 0.2s;
+      outline: none;
+      line-height: 1.5;
+      color: #0a1c2a;
+    }
+
+    textarea:focus {
+      border-color: #2c7da0;
+      box-shadow: 0 0 0 3px rgba(44, 125, 160, 0.2);
+    }
+
+    /* select, sliders row */
+    .select-wrapper {
+      margin-bottom: 2rem;
+    }
+
+    .styled-select {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border-radius: 1.2rem;
+      background-color: #ffffff;
+      border: 1.5px solid #e2edf2;
+      font-weight: 500;
+      color: #1a2c3b;
+      font-size: 0.95rem;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.2s;
+      appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%232c7da0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+    }
+
+    .styled-select:focus {
+      border-color: #2c7da0;
+      box-shadow: 0 0 0 2px rgba(44,125,160,0.2);
+    }
+
+    /* sliders panel */
+    .controls-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .slider-control {
+      flex: 1;
+      min-width: 160px;
+    }
+
+    .slider-control span {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #2c4a5e;
+      margin-bottom: 0.5rem;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      height: 5px;
+      -webkit-appearance: none;
+      background: #cddfe6;
+      border-radius: 10px;
+      outline: none;
+    }
+
+    input[type="range"]:focus {
+      outline: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      background: #2c7da0;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      border: none;
+      transition: 0.1s;
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover {
+      background: #1f5e7a;
+      transform: scale(1.18);
+    }
+
+    .value-indicator {
+      background: #eef3f7;
+      padding: 0.2rem 0.6rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #1b5a77;
+    }
+
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 0.85rem 1rem;
+      border: none;
+      border-radius: 2rem;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      background: #f1f5f9;
+      color: #1f3e54;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    .btn-primary {
+      background: #1e5f7a;
+      color: white;
+      box-shadow: 0 8px 16px -8px rgba(30, 95, 122, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: #0f495f;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: #eef2f6;
+      border: 1px solid #cbdde6;
+    }
+
+    .btn-secondary:hover {
+      background: #e2eaf0;
+      transform: scale(0.98);
+    }
+
+    .info-status {
+      background: #eff5f9;
+      border-radius: 1rem;
+      padding: 0.8rem 1rem;
+      font-size: 0.8rem;
+      color: #2a5773;
+      border-left: 4px solid #2c7da0;
+      margin-top: 0.5rem;
+      word-break: break-word;
+    }
+
+    .info-status strong {
+      font-weight: 700;
+      color: #13485e;
+    }
+
+    .footer-note {
+      font-size: 0.7rem;
+      text-align: center;
+      color: #7f95a8;
+      margin-top: 1.5rem;
+      border-top: 1px solid #e2edf2;
+      padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="tts-card">
+  <h1>ইসলামিয়া ডেন্টাল কেয়ার</h1>
+  <div class="sub">স্পিকার মেনেজমেন্ট অফলাইন</div>
+
+  <!-- text input area -->
+  <div class="input-group">
+    <label>✍️ আপনার টেক্সট / Your text</label>
+    <textarea id="textInput" rows="4" placeholder="Example: Hello, how are you? 🌟 আর বলুন 'আমি বাংলায় কথা বলতে পারি' — খুব সহজ!&#10;&#10;Write any English or Bengali sentence. Offline TTS will speak perfectly.">ইসলামিয়া ডেন্টাল কেয়ারে আপনাকে স্বাগতম! টোকেন নম্বর D, 49. অনুগ্রহ করে ভেতরে প্রবেশ করুন।</textarea>
+  </div>
+
+  <!-- voice selection: male/female + language combined -->
+  <div class="select-wrapper">
+    <label>🎤 ভয়েস নির্বাচন করুন (ভাষা & লিঙ্গ) • Voice (Language & Gender)</label>
+    <select id="voiceGenderSelect" class="styled-select">
+      <option value="en_male">🇬🇧 English - Male 🧑</option>
+      <option value="en_female">🇬🇧 English - Female 👩</option>
+      <option value="bn_male">🇧🇩 বাংলা - Male 🧑</option>
+      <option value="bn_female">🇧🇩 বাংলা - Female 👩</option>
+    </select>
+  </div>
+
+  <!-- pitch + rate sliders -->
+  <div class="controls-grid">
+    <div class="slider-control">
+      <span>🎵 Pitch <span id="pitchValue" class="value-indicator">1.00</span></span>
+      <input type="range" id="pitchSlider" min="0.5" max="2.0" step="0.01" value="1.0">
+    </div>
+    <div class="slider-control">
+      <span>⚡ Rate (Speed) <span id="rateValue" class="value-indicator">1.00</span></span>
+      <input type="range" id="rateSlider" min="0.5" max="2.0" step="0.01" value="1.0">
+    </div>
+  </div>
+
+  <!-- action buttons -->
+  <div class="button-group">
+    <button id="playBtn" class="btn btn-primary">▶ Play / Speak</button>
+    <button id="stopBtn" class="btn btn-secondary">⏹️ Stop</button>
+  </div>
+
+  <!-- dynamic status: shows which voice is being used + realtime info -->
+  <div id="voiceStatus" class="info-status">
+    <strong>💡 Status ready</strong> — Choose a voice & press play. No internet needed.
+  </div>
+  <div class="footer-note">
+    ⚡ Powered by Browser's Web Speech API | Pitch & Rate fully adjustable | Supports Bengali & English offline
+  </div>
+</div>
+
+<script>
+  (function() {
+    // DOM elements
+    const textarea = document.getElementById('textInput');
+    const voiceSelect = document.getElementById('voiceGenderSelect');
+    const pitchSlider = document.getElementById('pitchSlider');
+    const rateSlider = document.getElementById('rateSlider');
+    const pitchValueSpan = document.getElementById('pitchValue');
+    const rateValueSpan = document.getElementById('rateValue');
+    const playBtn = document.getElementById('playBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    const voiceStatusDiv = document.getElementById('voiceStatus');
+
+    // Helper: update displayed numeric values for sliders
+    function updateSliderDisplay() {
+      pitchValueSpan.innerText = parseFloat(pitchSlider.value).toFixed(2);
+      rateValueSpan.innerText = parseFloat(rateSlider.value).toFixed(2);
+    }
+
+    pitchSlider.addEventListener('input', updateSliderDisplay);
+    rateSlider.addEventListener('input', updateSliderDisplay);
+    updateSliderDisplay();
+
+    // ---------- VOICE MATCHING LOGIC (gender & language heuristic) ----------
+    // gender patterns for male/female detection inside voice.name
+    function isMaleVoice(voiceName) {
+      const name = voiceName.toLowerCase();
+      return /\b(male|man|boy|guy|david|alex|daniel|michael|rohan|microsoft hazrat|google uk english male|男性)\b/i.test(name) ||
+             (name.includes('male') || name.includes('man') || (name.includes('voice') && !name.includes('female')));
+    }
+
+    function isFemaleVoice(voiceName) {
+      const name = voiceName.toLowerCase();
+      return /\b(female|woman|girl|lady|samantha|victoria|ava|sarah|claire|zira|heera|microsoft iran|google uk english female|女性)\b/i.test(name) ||
+             (name.includes('female') || name.includes('woman') || (name.includes('siri')) || (name.includes('voice') && !name.includes('male')));
+    }
+
+    /**
+     * Get the best matching voice based on language code ('en' or 'bn') and gender ('male'/'female')
+     * Uses current list of voices from speechSynthesis.getVoices()
+     * Returns the matched voice object or null if no match at all.
+     */
+    function findBestVoice(langCode, gender) {
+      const voices = window.speechSynthesis.getVoices();
+      if (!voices || voices.length === 0) return null;
+
+      // Filter voices by language (starts with langCode, case-insensitive)
+      let filteredByLang = voices.filter(voice => voice.lang.toLowerCase().startsWith(langCode));
+      
+      if (filteredByLang.length === 0) {
+        // fallback: if no Bengali voice but 'bn' not found, try to accept any 'bn-IN' 'bn-BD' flexible
+        if (langCode === 'bn') {
+          filteredByLang = voices.filter(voice => voice.lang.toLowerCase().includes('bn') || voice.lang.toLowerCase().includes('bangla'));
+        }
+        if (filteredByLang.length === 0) return null;
+      }
+
+      // if gender is 'male', try to find male voice from filtered list
+      if (gender === 'male') {
+        const maleMatch = filteredByLang.find(voice => isMaleVoice(voice.name));
+        if (maleMatch) return maleMatch;
+        // second attempt: any voice that doesn't explicitly contain female patterns, but favor default neutral
+        const neutral = filteredByLang.find(voice => !isFemaleVoice(voice.name));
+        if (neutral) return neutral;
+        return filteredByLang[0]; // fallback to first language match
+      } 
+      else if (gender === 'female') {
+        const femaleMatch = filteredByLang.find(voice => isFemaleVoice(voice.name));
+        if (femaleMatch) return femaleMatch;
+        const neutral = filteredByLang.find(voice => !isMaleVoice(voice.name));
+        if (neutral) return neutral;
+        return filteredByLang[0];
+      }
+      return filteredByLang[0];
+    }
+
+    // helper to show status message
+    function setStatusMessage(message, isError = false) {
+      voiceStatusDiv.innerHTML = `<strong>${isError ? '⚠️' : '🎤'} ${message}</strong>`;
+      if (!isError) {
+        // auto reset style but keep info
+        setTimeout(() => {
+          if (voiceStatusDiv.innerHTML.includes(message)) {
+            // optional but keep last info
+          }
+        }, 4000);
+      }
+    }
+
+    // Stop any ongoing speech
+    function cancelSpeech() {
+      if (window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
+    }
+
+    // Main speech function
+    function speakText() {
+      // cancel previous speech immediately to avoid overlapping
+      cancelSpeech();
+
+      const textToSpeak = textarea.value.trim();
+      if (textToSpeak === "") {
+        setStatusMessage("❗ Please enter some text before speaking.", true);
+        return;
+      }
+
+      // Get voices array, if empty => voices not ready
+      let availableVoices = window.speechSynthesis.getVoices();
+      if (!availableVoices || availableVoices.length === 0) {
+        setStatusMessage("⏳ Voice data is still loading. Please wait a moment and try again.", true);
+        // Attempt to wait for voiceschanged event internally? but we show error and retry after small delay?
+        // We'll add fallback: listen to voiceschanged if empty call again in 500ms once.
+        const retryTimeout = setTimeout(() => {
+          if (window.speechSynthesis.getVoices().length > 0) {
+            setStatusMessage("✅ Voices ready! Press play again.", false);
+          } else {
+            setStatusMessage("⚠️ Web Speech API not ready. Try again in a second.", true);
+          }
+        }, 300);
+        return;
+      }
+
+      // 1) parse selected value: "en_male", "en_female", "bn_male", "bn_female"
+      const selectedVal = voiceSelect.value; // e.g., "en_male"
+      const [langPrefix, gender] = selectedVal.split('_'); // langPrefix = 'en' or 'bn', gender = 'male'/'female'
+      
+      let targetLangCode = (langPrefix === 'en') ? 'en' : 'bn';
+      let targetGender = gender; // 'male' or 'female'
+
+      // Find voice that matches language + gender (heuristic)
+      let selectedVoice = findBestVoice(targetLangCode, targetGender);
+      
+      let usedVoiceName = "Fallback (system default)";
+      let usedLangDisplay = targetLangCode === 'en' ? 'English' : 'Bengali';
+      let usedGenderDisplay = targetGender === 'male' ? 'Male' : 'Female';
+      
+      if (!selectedVoice) {
+        // ultimate fallback : try to pick any voice with at least language prefix? if even fails, try any english voice
+        const allVoices = window.speechSynthesis.getVoices();
+        const anyFallback = allVoices.find(v => v.lang.startsWith('en')) || allVoices[0];
+        if (anyFallback) {
+          selectedVoice = anyFallback;
+          usedVoiceName = selectedVoice.name + " (fallback)";
+          setStatusMessage(`⚠️ No perfect ${usedLangDisplay} ${usedGenderDisplay} voice found. Using "${selectedVoice.name}" as fallback.`, true);
+        } else {
+          setStatusMessage("❌ No speech voices available on this device. TTS cannot proceed.", true);
+          return;
+        }
+      } else {
+        usedVoiceName = selectedVoice.name;
+      }
+
+      // Create utterance
+      const utterance = new SpeechSynthesisUtterance(textToSpeak);
+      utterance.voice = selectedVoice;
+      utterance.pitch = parseFloat(pitchSlider.value);
+      utterance.rate = parseFloat(rateSlider.value);
+      // optional but helpful to set language tag matching voice
+      utterance.lang = selectedVoice.lang;
+
+      // Success handlers
+      utterance.onstart = () => {
+        setStatusMessage(`🔊 Speaking now · Voice: "${usedVoiceName}" · ${usedLangDisplay} (${usedGenderDisplay}) · Pitch ${utterance.pitch.toFixed(2)} · Rate ${utterance.rate.toFixed(2)}`);
+      };
+      
+      utterance.onend = () => {
+        setStatusMessage(`✅ Speech finished · Ready for next text.`);
+      };
+      
+      utterance.onerror = (event) => {
+        console.warn("TTS Error:", event);
+        setStatusMessage(`⚠️ Speech error: ${event.error || "unknown error"}. Try different voice settings.`, true);
+      };
+
+      // Speak!
+      window.speechSynthesis.speak(utterance);
+    }
+
+    // attach Play event with pre-checks
+    function onPlay() {
+      // ensure any stale speech is cancelled before new
+      cancelSpeech();
+      // small delay to properly cancel for some browsers (improves consistency)
+      setTimeout(() => {
+        speakText();
+      }, 30);
+    }
+
+    // Stop event: cancels and shows status
+    function onStop() {
+      cancelSpeech();
+      setStatusMessage("⏹️ Speech stopped by user.", false);
+    }
+
+    // voice availability handling: listen to voiceschanged to refresh if needed (and show status)
+    if (window.speechSynthesis) {
+      // Some browsers load voices asynchronously; we can update UI when they become available.
+      window.speechSynthesis.onvoiceschanged = () => {
+        const voicesCount = window.speechSynthesis.getVoices().length;
+        if (voicesCount > 0) {
+          // optional - Test mapping for each selected option and provide friendly note
+          const voices = window.speechSynthesis.getVoices();
+          const hasEnglish = voices.some(v => v.lang.toLowerCase().startsWith('en'));
+          const hasBengali = voices.some(v => v.lang.toLowerCase().includes('bn') || v.lang.toLowerCase().includes('bangla'));
+          let msg = `✅ Voice engine ready (${voicesCount} voices available). `;
+          if (!hasBengali) msg += `⚠️ No Bengali voice detected, but fallback may work. `;
+          if (!hasEnglish) msg += `⚠️ No English voice? Some browsers limited. `;
+          setStatusMessage(msg, false);
+        } else {
+          setStatusMessage("🎙️ Voice list empty, but will retry on play.", false);
+        }
+      };
+      
+      // initial call in case voices already loaded
+      if (window.speechSynthesis.getVoices().length > 0) {
+        const ev = new Event('voiceschanged');
+        window.dispatchEvent(ev);
+        // safely trigger
+        setTimeout(() => {
+          if (window.speechSynthesis.getVoices().length) {
+            const vCount = window.speechSynthesis.getVoices().length;
+            setStatusMessage(`🎧 TTS active · ${vCount} voice(s) found. Select language/gender & press Play.`, false);
+          }
+        }, 100);
+      } else {
+        // fallback message
+        setStatusMessage("🔄 Loading speech voices... (this happens once)", false);
+      }
+    } else {
+      setStatusMessage("❌ Your browser does NOT support Web Speech API. Please use Chrome, Edge, Safari, or modern browser.", true);
+      playBtn.disabled = true;
+      stopBtn.disabled = true;
+    }
+
+    // attach event listeners
+    playBtn.addEventListener('click', onPlay);
+    stopBtn.addEventListener('click', onStop);
+
+    // extra: when changing voice selection, we can give quick preview hint without speaking
+    voiceSelect.addEventListener('change', () => {
+      // just preview status update: show which combination is selected and availability check (non-intrusive)
+      const voicesNow = window.speechSynthesis.getVoices();
+      if (voicesNow.length === 0) {
+        setStatusMessage("⏳ Voices loading, please wait before playing.", false);
+        return;
+      }
+      const selectedVal = voiceSelect.value;
+      const [lang, gender] = selectedVal.split('_');
+      const testVoice = findBestVoice(lang === 'en' ? 'en' : 'bn', gender);
+      if (testVoice) {
+        setStatusMessage(`✨ Selected: ${lang === 'en' ? 'English' : 'Bengali'} (${gender === 'male' ? 'Male 🧑' : 'Female 👩'}) → Voice ready: "${testVoice.name}"`, false);
+      } else {
+        setStatusMessage(`⚠️ No direct match for ${lang === 'en' ? 'English' : 'Bengali'} ${gender} voice, but fallback will work on play.`, true);
+      }
+    });
+
+    // Improve UX: remove any residual speech on page unload if needed 
+    window.addEventListener('beforeunload', () => {
+      if (window.speechSynthesis) window.speechSynthesis.cancel();
+    });
+
+    // small fix: some mobile browsers require user interaction before first utterance, but play button gives that.
+    // Also ensure that if there is hidden duplicate utterance after cancel, fine.
+  })();
+</script>
+</body>
+</html>
